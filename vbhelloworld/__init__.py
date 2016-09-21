@@ -5,8 +5,9 @@ from os.path import expanduser
 def main():
     """Entry point for the application script"""
     #filex=open( expanduser('~/etc/helloworld.conf') )
-    filex=open( expanduser('~/.local/etc/helloworld.conf') )
-    conf= filex.read()
+    filex=open( expanduser('~/helloworld.conf') ) 
+    #filex=open( expanduser('~/.local/etc/helloworld.conf') )
+    conf=filex.read()
     filex.close()
     yamlConf = yaml.load(conf)
 

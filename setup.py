@@ -20,7 +20,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='vbhelloworld',
-    version='1.0.1',
+    version='1.0.2',
     description='A hello world Python project',
     long_description=long_description,
     url='https://github.com/vborrego/vbhelloworld',
@@ -67,8 +67,8 @@ setup(
     },
 
     #data_files=[('/etc', ['data/helloworld.conf'])],
-    #data_files=[( expanduser('~/etc'), ['data/helloworld.conf'])],
-    data_files=[('etc', ['data/helloworld.conf'])],
+    data_files=[( expanduser('~'), ['data/helloworld.conf'])],
+    #data_files=[('etc', ['data/helloworld.conf'])],
 
     entry_points={
         'console_scripts': [
