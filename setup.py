@@ -20,7 +20,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='vbhelloworld',
-    version='1.0.0',
+    version='1.0.1',
     description='A hello world Python project',
     long_description=long_description,
     url='https://github.com/vborrego/vbhelloworld',
