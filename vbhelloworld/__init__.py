@@ -1,12 +1,10 @@
 import sys
 import yaml
 from os.path import expanduser
+from os.path import isfile
 
-def main():
-    """Entry point for the application script"""
-    #filex=open( expanduser('~/etc/helloworld.conf') )
-    filex=open( expanduser('~/helloworld.conf') ) 
-    #filex=open( expanduser('~/.local/etc/helloworld.conf') )
+def handle_file(filepath):
+    filex=open( filepath ) 
     conf=filex.read()
     filex.close()
     yamlConf = yaml.load(conf)
@@ -16,7 +14,26 @@ def main():
     else:
         print("%s"%( yamlConf['banner'] ) )
 
+def create_file(filepath):
+    print("Configuration file %s doesn't exist"%(filepath))
+    print("Creating file %s ..."%(filepath))
+    f = open(filepath,'w')
+    yaml.dump( {"banner":"Hello world"} , f , default_flow_style=False) 
+    f.close()
+    
+def main(conf_file=''):
+    """Entry point for the application script"""
+    filepath = expanduser('~/helloworld.conf')
+    
+    if conf_file!='':
+        filepath=conf_file
+    
+    if isfile(filepath):
+        handle_file(filepath)
+    else:
+        create_file(filepath)
+        handle_file(filepath)
+    
 def add(arg1,arg2):
     """ Add two values arg1 and arg2 """
     return arg1+arg2
-
