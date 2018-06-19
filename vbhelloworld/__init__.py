@@ -2,6 +2,8 @@ import sys
 import yaml
 from os.path import expanduser
 from os.path import isfile
+from os.path import abspath
+from os.path import dirname
 
 def handle_file(filepath):
     filex=open( filepath ) 
@@ -18,16 +20,18 @@ def create_file(filepath):
     print("Configuration file %s doesn't exist"%(filepath))
     print("Creating file %s ..."%(filepath))
     f = open(filepath,'w')
-    yaml.dump( {"banner":"Hello world"} , f , default_flow_style=False) 
+    yaml.dump( {"banner":"Hello world create"} , f , default_flow_style=False) 
     f.close()
     
 def main(conf_file=''):
     """Entry point for the application script"""
-    filepath = expanduser('~/helloworld.conf')
+    here = abspath(dirname(__file__))
+    print('Current module location %s'%(here) )
+    filepath = expanduser('~/.local/etc/helloworld.conf')
     
     if conf_file!='':
         filepath=conf_file
-    
+
     if isfile(filepath):
         handle_file(filepath)
     else:
